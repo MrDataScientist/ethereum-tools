@@ -15,4 +15,8 @@ describe("EthereumUtils", () => {
       )
     ).toBe(false)
   })
+
+  test("parseRawTx", () => {
+    // todo!
+  })
 })
