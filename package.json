@@ -1,0 +1,48 @@
+{
+  "name": "ethereum-tools",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf dist && tsc",
+    "build:watch": "tsc -w",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/max-block/ethereum-tools.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/max-block/ethereum-tools/issues"
+  },
+  "homepage": "https://github.com/max-block/ethereum-tools#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bignumber.js": "^6.0.0",
+    "ethereumjs-util": "^5.1.5",
+    "keythereum": "^1.0.2",
+    "yargs": "^11.0.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^5.0.1",
+    "@types/jest": "^22.2.0",
+    "@types/node": "^9.4.7",
+    "@types/yargs": "^11.0.0",
+    "jest": "^22.4.2",
+    "rimraf": "^2.6.2",
+    "ts-jest": "^22.4.2",
+    "tslint": "^5.9.1",
+    "tslint-config-prettier": "^1.10.0",
+    "typescript": "^2.7.2"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"]
+  }
+}
