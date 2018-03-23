@@ -7,13 +7,15 @@ Command line tools for Ethereum
 * sign-tx
 * encode-input
 * decode-input
+* check-http-server
 
 
 ### Todo
+* check-ws-server
 * account-generator
-* check-servers
 * deploy-contract
 * get-balance
+* get-token-balance
 * get-nonce
 * get-private-key
 * schedule-tx

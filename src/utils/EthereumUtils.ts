@@ -1,9 +1,14 @@
+import axios from "axios"
 import * as fakeEthTx from "ethereumjs-tx/fake"
 import * as Tx from "ethereumjs-tx"
 import BigNumber from "bignumber.js"
 import * as abi from "web3-eth-abi"
 import * as abiDecoder from "abi-decoder"
 import { isValidAddress, isValidPrivate, privateToAddress, bufferToHex } from "ethereumjs-util"
+
+axios.defaults.timeout = 5000
+
+let rpcIdCounter = 1
 
 export class EthereumUtils {
   public static checkPrivateKey = (address: string, privateKey: string): boolean => {
@@ -68,5 +73,25 @@ export class EthereumUtils {
   public static decodeInput = ({ jsonInterface, input }: { jsonInterface: object; input: string }) => {
     abiDecoder.addABI(jsonInterface)
     return abiDecoder.decodeMethod(input)
+  }
+
+  public static rpcGetBlockNumber = async (params: {
+    rpcServer: string
+  }): Promise<{ blockNumber?: number; error?: string }> => {
+    try {
+      rpcIdCounter += 1
+      const data = {
+        jsonrpc: "2.0",
+        method: "eth_blockNumber",
+        id: rpcIdCounter,
+        params: []
+      }
+      const res = await axios.post(params.rpcServer, data)
+      if (res.data && res.data.result) return { blockNumber: new BigNumber(res.data.result).toNumber() }
+      if (res.data && res.data.error) return { error: res.data.error }
+      return { error: "unknown error" }
+    } catch (err) {
+      return { error: err.message }
+    }
   }
 }
