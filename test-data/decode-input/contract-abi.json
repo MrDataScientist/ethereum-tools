@@ -1,0 +1,17 @@
+[
+  {
+    "constant": false,
+    "inputs": [{ "name": "_value", "type": "uint256" }],
+    "name": "setValue",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "name": "_value", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  }
+]

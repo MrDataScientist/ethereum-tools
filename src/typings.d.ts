@@ -1,3 +1,5 @@
 declare module "ethereumjs-util"
 declare module "ethereumjs-tx/fake"
 declare module "ethereumjs-tx"
+declare module "web3-eth-abi"
+declare module "abi-decoder"

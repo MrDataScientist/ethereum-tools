@@ -25,7 +25,7 @@ export class CommonUtils {
     }
   }
 
-  public static readConfigFile(path: any, options: string[]) {
+  public static readConfigFile(path: string, options: string[]) {
     if (!fs.existsSync(path)) {
       CommonUtils.printFatal("Can't find config file: " + path)
     }
@@ -34,6 +34,17 @@ export class CommonUtils {
       return R.pick(options)(data)
     } catch (err) {
       CommonUtils.printFatal("Parse config file error: " + err.message)
+    }
+  }
+
+  public static readFileAsJsonOrFatal(path: string) {
+    if (!fs.existsSync(path)) {
+      CommonUtils.printFatal("Can't find file: " + path)
+    }
+    try {
+      return JSON.parse(fs.readFileSync(path, "utf8"))
+    } catch (err) {
+      CommonUtils.printFatal(`Parse JSON error in file ${path}: ${err.message}`)
     }
   }
 }

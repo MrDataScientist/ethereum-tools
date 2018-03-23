@@ -30,6 +30,5 @@ const handler = async (args: Arguments) => {
 
 export const SignTxModule: CommandModule = {
   command: "sign-tx <configFile>",
-  describe: "desc bla bla",
   handler
 }

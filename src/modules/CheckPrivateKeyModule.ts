@@ -11,14 +11,5 @@ const handler = async (yargs: Arguments) => {
 
 export const CheckPrivateKeyModule: CommandModule = {
   command: "check-private-key <address> <privateKey>",
-  describe: "desc bla bla",
-  builder: {
-    address: {
-      type: "string"
-    },
-    privateKey: {
-      type: "string"
-    }
-  },
   handler
 }

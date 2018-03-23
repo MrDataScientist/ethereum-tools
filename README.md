@@ -3,17 +3,18 @@ Command line tools for Ethereum
 
 ### Supported commands
 * check-private-key
-* parse-raw-tx
+* parse-tx
 * sign-tx
+* encode-input
+* decode-input
 
 
 ### Todo
 * account-generator
 * check-servers
-* decode-input
 * deploy-contract
-* encode-input
 * get-balance
+* get-nonce
 * get-private-key
 * schedule-tx
 * send-tx

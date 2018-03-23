@@ -1,6 +1,8 @@
 import * as fakeEthTx from "ethereumjs-tx/fake"
 import * as Tx from "ethereumjs-tx"
 import BigNumber from "bignumber.js"
+import * as abi from "web3-eth-abi"
+import * as abiDecoder from "abi-decoder"
 import { isValidAddress, isValidPrivate, privateToAddress, bufferToHex } from "ethereumjs-util"
 
 export class EthereumUtils {
@@ -16,7 +18,7 @@ export class EthereumUtils {
     )
   }
 
-  public static parseRawTx = (rawTx: string) => {
+  public static parseTx = (rawTx: string) => {
     const tx = new fakeEthTx(rawTx)
     return {
       value: new BigNumber(bufferToHex(tx.value)).toString(10),
@@ -58,5 +60,13 @@ export class EthereumUtils {
     signedTx.sign(Buffer.from(tx.privateKey, "hex"))
     const serializedTx = signedTx.serialize()
     return "0x" + serializedTx.toString("hex")
+  }
+
+  public static encodeFunctionCall = ({ jsonInterface, parameters }: { jsonInterface: object; parameters: string[] }) =>
+    abi.encodeFunctionCall(jsonInterface, parameters)
+
+  public static decodeInput = ({ jsonInterface, input }: { jsonInterface: object; input: string }) => {
+    abiDecoder.addABI(jsonInterface)
+    return abiDecoder.decodeMethod(input)
   }
 }
