@@ -2,7 +2,11 @@
   "name": "ethereum-tools",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "ethereum-tools": "bin/ethereum-tools"
+  },
   "scripts": {
     "build": "rimraf dist && tsc",
     "build:watch": "tsc -w",
@@ -12,8 +16,10 @@
     "type": "git",
     "url": "git+https://github.com/max-block/ethereum-tools.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "ethereum"
+  ],
+  "author": "maxblock",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/max-block/ethereum-tools/issues"

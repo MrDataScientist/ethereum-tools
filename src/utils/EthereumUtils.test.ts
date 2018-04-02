@@ -1,7 +1,6 @@
 import * as path from "path"
 import * as fs from "fs-extra"
 import { EthereumUtils } from "./EthereumUtils"
-import { decode } from "punycode"
 
 describe("EthereumUtils", () => {
   test("checkPrivateKey", () => {
