@@ -5,7 +5,7 @@ const handler = async (yargs: Arguments) => {
   const { addresses } = yargs
   for (const address of addresses.split(",")) {
     const res = await EthereumUtils.rpcGetBlockNumber({ rpcServer: address })
-    console.log(address + " / blockNumber: " + (res.blockNumber || res.error))
+    console.log(address + " / blockNumber: " + (res.error || res.blockNumber))
   }
 }
 

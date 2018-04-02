@@ -2,5 +2,6 @@
   "cSpell.words": [
     "ethereumjs",
     "keythereum"
-  ]
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
