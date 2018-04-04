@@ -4,7 +4,7 @@ import { ParseTxModule } from "./modules/ParseTxModule"
 import { SignTxModule } from "./modules/SignTxModule"
 import { EncodeInputModule } from "./modules/EncodeInputModule"
 import { DecodeInputModule } from "./modules/DecodeInputModule"
-import { CheckHttpServerModule } from "./modules/CheckHttpServer"
+import { CheckRpcServerModule } from "./modules/CheckRpcServer"
 import { GetBalanceModule } from "./modules/GetBalanceModule"
 
 yargs
@@ -14,11 +14,14 @@ yargs
   .command(SignTxModule)
   .command(EncodeInputModule)
   .command(DecodeInputModule)
-  .command(CheckHttpServerModule)
+  .command(CheckRpcServerModule)
   .command(GetBalanceModule)
 
 yargs
-  .demandCommand(1, "Commands: check-private-key, parse-tx, sign-tx, encode-input, decode-input, check-http-server, get-balance")
+  .demandCommand(
+    1,
+    "Commands: check-private-key, parse-tx, sign-tx, encode-input, decode-input, check-rpc-server, get-balance"
+  )
   .help()
   .wrap(80)
   .strict()

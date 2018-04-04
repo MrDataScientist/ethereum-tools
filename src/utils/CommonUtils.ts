@@ -47,17 +47,4 @@ export class CommonUtils {
       CommonUtils.printFatal(`Parse JSON error in file ${path}: ${err.message}`)
     }
   }
-
-  public static promiseTimeout = (ms: number, promise: Promise<any>) => {
-    // Create a promise that rejects in <ms> milliseconds
-    const timeout = new Promise(resolve => {
-      const id = setTimeout(() => {
-        clearTimeout(id)
-        resolve({ error: "timeout" })
-      }, ms)
-    })
-
-    // Returns a race between our timeout and the passed in promise
-    return Promise.race([promise, timeout])
-  }
 }

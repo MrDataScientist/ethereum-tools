@@ -6,9 +6,10 @@ import * as WebSocket from "ws"
 import * as abi from "web3-eth-abi"
 import * as abiDecoder from "abi-decoder"
 import { isValidAddress, isValidPrivate, privateToAddress, bufferToHex } from "ethereumjs-util"
-import { CommonUtils } from "./CommonUtils"
 
-axios.defaults.timeout = 5000
+const TIMEOUT = 5000
+
+axios.defaults.timeout = TIMEOUT
 
 let rpcIdCounter = 1
 
@@ -20,7 +21,7 @@ const rpcCall = async (url: string, method: string, params: any[]): Promise<{ re
     id: rpcIdCounter,
     params
   }
-  return url.startsWith("http") ? httpRpcCall(url, data) : CommonUtils.promiseTimeout(5000, wsRpcCall(url, data))
+  return url.startsWith("http") ? httpRpcCall(url, data) : wsRpcCall(url, data)
 }
 
 const httpRpcCall = async (url: string, data: any): Promise<{ result?: string; error?: string }> => {
@@ -36,12 +37,14 @@ const httpRpcCall = async (url: string, data: any): Promise<{ result?: string; e
 
 const wsRpcCall = async (url: string, data: any): Promise<{ result?: string; error?: string }> => {
   return new Promise(resolve => {
+    const timeout = setTimeout(() => resolve({ error: "timeout" }), TIMEOUT)
     try {
       const ws = new WebSocket(url)
       ws.on("open", () => {
         ws.send(JSON.stringify(data))
       })
       ws.on("message", (message: string) => {
+        clearTimeout(timeout)
         ws.close()
         try {
           const res = JSON.parse(message)
@@ -51,9 +54,10 @@ const wsRpcCall = async (url: string, data: any): Promise<{ result?: string; err
         } catch (err) {
           resolve({ error: err.message })
         }
-        
       })
+      ws.on("error", err => resolve({ error: err.message }))
     } catch (err) {
+      clearTimeout(timeout)
       resolve({ error: err.message })
     }
   })
