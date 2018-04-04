@@ -34,6 +34,7 @@
     "keythereum": "^1.0.2",
     "ramda": "^0.25.0",
     "web3": "^1.0.0-beta.33",
+    "ws": "^5.1.1",
     "yargs": "^11.0.0"
   },
   "devDependencies": {
@@ -41,6 +42,7 @@
     "@types/jest": "^22.2.2",
     "@types/node": "^9.6.1",
     "@types/ramda": "^0.25.21",
+    "@types/ws": "^4.0.2",
     "@types/yargs": "^11.0.0",
     "jest": "^22.4.3",
     "rimraf": "^2.6.2",

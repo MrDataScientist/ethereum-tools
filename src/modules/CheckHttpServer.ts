@@ -1,5 +1,6 @@
 import { CommandModule, Arguments } from "yargs"
 import { EthereumUtils } from "../utils/EthereumUtils"
+import { CommonUtils } from "../utils/CommonUtils"
 
 const handler = async (yargs: Arguments) => {
   const { addresses } = yargs
@@ -7,6 +8,7 @@ const handler = async (yargs: Arguments) => {
     const res = await EthereumUtils.rpcGetBlockNumber({ rpcServer: address })
     console.log(address + " / blockNumber: " + (res.error || res.blockNumber))
   }
+  CommonUtils.printGreen("Done!")
 }
 
 export const CheckHttpServerModule: CommandModule = {
