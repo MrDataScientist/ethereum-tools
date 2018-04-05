@@ -27,7 +27,7 @@ const rpcCall = async (url: string, method: string, params: any[]): Promise<{ re
 const httpRpcCall = async (url: string, data: any): Promise<{ result?: string; error?: string }> => {
   try {
     const res = await axios.post(url, data)
-    if (res.data && res.data.error) return { error: res.data.error }
+    if (res.data && res.data.error) return { error: res.data.error.message }
     if (res.data && res.data.result) return { result: res.data.result }
     return { error: "unknown error" }
   } catch (err) {
@@ -48,7 +48,7 @@ const wsRpcCall = async (url: string, data: any): Promise<{ result?: string; err
         ws.close()
         try {
           const res = JSON.parse(message)
-          if (res.error) resolve({ error: res.error })
+          if (res.error) resolve({ error: res.error.message })
           else if (res.result) resolve({ result: res.result })
           else resolve({ error: "unknown error" })
         } catch (err) {
@@ -128,11 +128,22 @@ export class EthereumUtils {
     return abiDecoder.decodeMethod(input)
   }
 
-  public static rpcGetBlockNumber = async (params: {
-    rpcServer: string
-  }): Promise<{ blockNumber?: number; error?: string }> => {
-    const res = await rpcCall(params.rpcServer, "eth_blockNumber", [])
+  public static rpcGetBlockNumber = async (rpcServer: string): Promise<{ blockNumber?: number; error?: string }> => {
+    const res = await rpcCall(rpcServer, "eth_blockNumber", [])
     if (res.result) return { blockNumber: new BigNumber(res.result).toNumber() }
     else return { error: res.error }
   }
+
+  public static rpcGetBalance = async (
+    rpcServer: string,
+    address: string
+  ): Promise<{ balance?: string; error?: string }> => {
+    const res = await rpcCall(rpcServer, "eth_getBalance", [address, "latest"])
+    if (res.result) return { balance: new BigNumber(res.result).toFixed() }
+    else return { error: res.error }
+  }
+
+  public static toEther = (value: string) => new BigNumber(value).dividedBy("1000000000000000000").toFixed()
+
+  public static toGwei = (value: string) => new BigNumber(value).dividedBy("1000000000").toFixed()
 }
