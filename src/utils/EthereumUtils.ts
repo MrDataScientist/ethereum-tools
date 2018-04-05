@@ -143,6 +143,15 @@ export class EthereumUtils {
     else return { error: res.error }
   }
 
+  public static rpcGetNonce = async (
+    rpcServer: string,
+    address: string
+  ): Promise<{ nonce?: number; error?: string }> => {
+    const res = await rpcCall(rpcServer, "eth_getTransactionCount", [address, "latest"])
+    if (res.result) return { nonce: new BigNumber(res.result).toNumber() }
+    else return { error: res.error }
+  }
+
   public static toEther = (value: string) => new BigNumber(value).dividedBy("1000000000000000000").toFixed()
 
   public static toGwei = (value: string) => new BigNumber(value).dividedBy("1000000000").toFixed()

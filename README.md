@@ -7,15 +7,14 @@ Command line tools for Ethereum
 * sign-tx
 * encode-input
 * decode-input
-* check-rpc-server
-
+* get-block-number
+* get-balance
+* get-nonce
 
 ### Todo
 * account-generator
 * deploy-contract
-* get-balance
 * get-token-balance
-* get-nonce
 * get-private-key
 * schedule-tx
 * send-tx
@@ -25,4 +24,3 @@ Command line tools for Ethereum
 * transfer-ether
 * transfer-token-from-many-to-one
 * transfer-token
-
