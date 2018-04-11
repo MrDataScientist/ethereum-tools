@@ -2,6 +2,7 @@ import axios from "axios"
 import * as fakeEthTx from "ethereumjs-tx/fake"
 import * as Tx from "ethereumjs-tx"
 import BigNumber from "bignumber.js"
+import * as keythereum from "keythereum"
 import * as WebSocket from "ws"
 import * as abi from "web3-eth-abi"
 import * as abiDecoder from "abi-decoder"
@@ -150,6 +151,12 @@ export class EthereumUtils {
     const res = await rpcCall(rpcServer, "eth_getTransactionCount", [address, "latest"])
     if (res.result) return { nonce: new BigNumber(res.result).toNumber() }
     else return { error: res.error }
+  }
+
+  public static getPrivateKeyFromKeystore = (address: string, password: string, keystorePath: string): string => {
+    const keyObject = keythereum.importFromFile(address, keystorePath)
+    const privateKey = keythereum.recover(password, keyObject)
+    return privateKey.toString("hex")
   }
 
   public static toEther = (value: string) => new BigNumber(value).dividedBy("1000000000000000000").toFixed()

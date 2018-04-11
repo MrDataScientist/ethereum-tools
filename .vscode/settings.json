@@ -1,7 +1,9 @@
 {
   "cSpell.words": [
     "Gwei",
+    "cliui",
     "ethereumjs",
+    "keystore",
     "keythereum"
   ],
   "typescript.tsdk": "node_modules/typescript/lib"

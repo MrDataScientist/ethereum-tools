@@ -1,4 +1,5 @@
 import * as yargs from "yargs"
+import * as cliui from "cliui"
 import { CheckPrivateKeyModule } from "./modules/CheckPrivateKeyModule"
 import { ParseTxModule } from "./modules/ParseTxModule"
 import { SignTxModule } from "./modules/SignTxModule"
@@ -7,6 +8,22 @@ import { DecodeInputModule } from "./modules/DecodeInputModule"
 import { GetBlockNumberModule } from "./modules/GetBlockNumberModule"
 import { GetBalanceModule } from "./modules/GetBalanceModule"
 import { GetNonceModule } from "./modules/GetNonceModule"
+import { GetPrivateKeyFromKeystoreModule } from "./modules/GetPrivateKeyFromKeystore"
+
+const commands = [
+  "check-private-key",
+  "parse-tx",
+  "sign-tx",
+  "encode-input",
+  "decode-input",
+  "get-block-number",
+  "get-balance",
+  "get-nonce",
+  "get-private-key-from-keystore"
+]
+const commandsUI = cliui()
+commandsUI.div("Commands:")
+commandsUI.div({ padding: [1, 0, 0, 1], text: commands.join("\n") + "\n" })
 
 yargs
   .usage("usage: $0 <command>")
@@ -18,12 +35,10 @@ yargs
   .command(GetBlockNumberModule)
   .command(GetBalanceModule)
   .command(GetNonceModule)
+  .command(GetPrivateKeyFromKeystoreModule)
 
 yargs
-  .demandCommand(
-    1,
-    "Commands: check-private-key, parse-tx, sign-tx, encode-input, decode-input, get-block-number, get-balance, get-nonce\n"
-  )
+  .demandCommand(1, commandsUI.toString())
   .help()
   .wrap(80)
   .strict()

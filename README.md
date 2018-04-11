@@ -10,12 +10,12 @@ Command line tools for Ethereum
 * get-block-number
 * get-balance
 * get-nonce
+* get-private-key-from-keystore
 
 ### Todo
 * account-generator
 * deploy-contract
 * get-token-balance
-* get-private-key
 * schedule-tx
 * send-tx
 * transfer-all-ether
