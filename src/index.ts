@@ -9,6 +9,7 @@ import { GetBlockNumberModule } from "./modules/GetBlockNumberModule"
 import { GetBalanceModule } from "./modules/GetBalanceModule"
 import { GetNonceModule } from "./modules/GetNonceModule"
 import { GetPrivateKeyFromKeystoreModule } from "./modules/GetPrivateKeyFromKeystore"
+import { TransferEtherModule } from "./modules/TransferEtherModule"
 
 const commands = [
   "check-private-key",
@@ -19,7 +20,8 @@ const commands = [
   "get-block-number",
   "get-balance",
   "get-nonce",
-  "get-private-key-from-keystore"
+  "get-private-key-from-keystore",
+  "transfer-ether"
 ]
 const commandsUI = cliui()
 commandsUI.div("Commands:")
@@ -36,6 +38,7 @@ yargs
   .command(GetBalanceModule)
   .command(GetNonceModule)
   .command(GetPrivateKeyFromKeystoreModule)
+  .command(TransferEtherModule)
 
 yargs
   .demandCommand(1, commandsUI.toString())

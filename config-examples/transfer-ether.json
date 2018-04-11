@@ -1,0 +1,9 @@
+{
+  "from": "0x7B38fec96a5696F8dF596FE7F148db1c47c8B49a",
+  "privateKey": "41281d30a80421fa5bb5de9e0c06c6d7a7bc07639d5709b3581d0fc2d3fab5cf",
+  "to": "0x5bf6d7c41c910457d8D861C8F3bd0dF5C2f8ccb2",
+  "gasPrice": "33000000000",
+  "value": "1000000000000000000",
+  "rpcServers": "http://localhost:7545",
+  "workDir": "/tmp"
+}

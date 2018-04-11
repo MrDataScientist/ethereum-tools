@@ -22,7 +22,7 @@ const rpcCall = async (url: string, method: string, params: any[]): Promise<{ re
     id: rpcIdCounter,
     params
   }
-  return url.startsWith("http") ? httpRpcCall(url, data) : wsRpcCall(url, data)
+  return url.toLowerCase().startsWith("http") ? httpRpcCall(url, data) : wsRpcCall(url, data)
 }
 
 const httpRpcCall = async (url: string, data: any): Promise<{ result?: string; error?: string }> => {
@@ -127,6 +127,15 @@ export class EthereumUtils {
   public static decodeInput = ({ jsonInterface, input }: { jsonInterface: object; input: string }) => {
     abiDecoder.addABI(jsonInterface)
     return abiDecoder.decodeMethod(input)
+  }
+
+  public static rpcSendRawTransaction = async (
+    rpcServer: string,
+    rawTx: string
+  ): Promise<{ hash?: string; error?: string }> => {
+    const res = await rpcCall(rpcServer, "eth_sendRawTransaction", [rawTx])
+    if (res.result) return { hash: res.result }
+    else return { error: res.error }
   }
 
   public static rpcGetBlockNumber = async (rpcServer: string): Promise<{ blockNumber?: number; error?: string }> => {
