@@ -12,6 +12,7 @@ Command line tools for Ethereum
 * get-nonce
 * get-private-key-from-keystore
 * transfer-ether
+* transfer-all-ether
 
 ### Todo
 * account-generator
@@ -19,7 +20,6 @@ Command line tools for Ethereum
 * get-token-balance
 * schedule-tx
 * send-tx
-* transfer-all-ether
 * transfer-ether-from-many-to-one
 * transfer-ether-from-one-to-many
 * transfer-token-from-many-to-one

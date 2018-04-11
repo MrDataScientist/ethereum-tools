@@ -1,0 +1,16 @@
+{
+  "recipient": "0x7B38fec96a5696F8dF596FE7F148db1c47c8B49a",
+  "gasPrice": "12000000000",
+  "accounts": [
+    {
+      "address": "0x5bf6d7c41c910457d8D861C8F3bd0dF5C2f8ccb2",
+      "privateKey": "7d9b35eb99cedeb764bc3bbb6f4d696550abd100c33eb349a1e1ba1f70892f24"
+    },
+    {
+      "address": "0xC2cEDE3e4bC334BdE3fd0F31071984379C96832B",
+      "privateKey": "fe6e3ee3bd68f078887e826f465ea17da2a10698e3c91c1286da8af6a70de80a"
+    }
+  ],
+  "rpcServers": "http://localhost:7545",
+  "workDir": "/tmp"
+}
