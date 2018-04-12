@@ -13,10 +13,10 @@ Command line tools for Ethereum
 * get-private-key-from-keystore
 * transfer-ether
 * transfer-all-ether
+* deploy-contract
 
 ### Todo
 * account-generator
-* deploy-contract
 * get-token-balance
 * schedule-tx
 * send-tx
