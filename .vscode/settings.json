@@ -3,8 +3,11 @@
     "Gwei",
     "cliui",
     "ethereumjs",
+    "execa",
+    "ganache",
     "keystore",
-    "keythereum"
+    "keythereum",
+    "promisify"
   ],
   "typescript.tsdk": "node_modules/typescript/lib"
 }

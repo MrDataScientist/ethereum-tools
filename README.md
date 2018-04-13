@@ -14,12 +14,12 @@ Command line tools for Ethereum
 * transfer-ether
 * transfer-all-ether
 * deploy-contract
+* send-tx
 
 ### Todo
 * account-generator
 * get-token-balance
 * schedule-tx
-* send-tx
 * transfer-ether-from-many-to-one
 * transfer-ether-from-one-to-many
 * transfer-token-from-many-to-one

@@ -12,6 +12,7 @@ import { GetPrivateKeyFromKeystoreModule } from "./modules/GetPrivateKeyFromKeys
 import { TransferEtherModule } from "./modules/TransferEtherModule"
 import { TransferAllEtherModule } from "./modules/TransferAllEtherModule"
 import { DeployContractModule } from "./modules/DeployContractModule"
+import { SendTxModule } from "./modules/SendTxModule"
 
 const commands = [
   "check-private-key",
@@ -25,7 +26,8 @@ const commands = [
   "get-private-key-from-keystore",
   "transfer-ether",
   "transfer-all-ether",
-  "deploy-contract"
+  "deploy-contract",
+  "send-tx"
 ]
 const commandsUI = cliui()
 commandsUI.div("Commands:")
@@ -45,6 +47,7 @@ yargs
   .command(TransferEtherModule)
   .command(TransferAllEtherModule)
   .command(DeployContractModule)
+  .command(SendTxModule)
 
 yargs
   .demandCommand(1, commandsUI.toString())
