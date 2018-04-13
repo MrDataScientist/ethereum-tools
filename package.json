@@ -13,7 +13,8 @@
     "test": "npm run test:unit && npm run test:e2e",
     "test:unit": "jest src",
     "test:e2e": "jest test/e2e",
-    "test:e2e:transfer-ether": "jest test/e2e/modules/transfer-ether"
+    "test:e2e:transfer-ether": "jest test/e2e/modules/transfer-ether",
+    "test:e2e:transfer-all-ether": "jest test/e2e/modules/transfer-all-ether"
   },
   "repository": {
     "type": "git",
